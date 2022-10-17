@@ -1,0 +1,371 @@
+
+
+; PRIMEIRO PASSO: uniformizar K  para todas as máquinas
+; isso é feito calculando o maior K para todas as máquinas, e depois as que têm menor utilizam-no
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; PRIMEIRA MÁQUINA
+
+qin Q__ Q__ R** q01
+
+;para cada digito do estado, acrescenta 1 ao valor de K
+q01 1__ 11_ RR* q01
+q01 2__ 21_ RR* q01
+q01 3__ 31_ RR* q01
+q01 4__ 41_ RR* q01
+q01 5__ 51_ RR* q01
+q01 6__ 61_ RR* q01
+q01 7__ 71_ RR* q01
+q01 8__ 81_ RR* q01
+q01 9__ 91_ RR* q01
+q01 0__ 01_ RR* q01
+
+;lendo A, terminou de ler o estado (já tem K da 1.ª máquina)
+q01 A__ A__ R** qskip1
+
+;vai até à máquina seguinte 
+qskip1 Q__ Q__ R** qskip1
+qskip1 A__ A__ R** qskip1
+qskip1 Y__ Y__ R** qskip1
+qskip1 N__ N__ R** qskip1
+qskip1 S__ S__ R** qskip1
+qskip1 L__ L__ R** qskip1
+qskip1 R__ R__ R** qskip1
+qskip1 1__ 1__ R** qskip1
+qskip1 2__ 2__ R** qskip1
+qskip1 3__ 3__ R** qskip1
+qskip1 4__ 4__ R** qskip1
+qskip1 5__ 5__ R** qskip1
+qskip1 6__ 6__ R** qskip1
+qskip1 7__ 7__ R** qskip1
+qskip1 8__ 8__ R** qskip1
+qskip1 9__ 9__ R** qskip1
+qskip1 0__ 0__ R** qskip1
+qskip1 ;__ ;__ R** qskip1
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; SEGUNDA MÁQUINA
+
+;chegou à 2.ª máquina 
+qskip1 $__ $__ R** q03
+q03 Q__ Q__ RL* q04
+q03 Y__ Y__ RL* q04
+q03 N__ N__ RL* q04
+
+;ver K da 2.ª máquina 
+q04 11_ 11_ RL* q04
+q04 21_ 21_ RL* q04
+q04 31_ 31_ RL* q04
+q04 41_ 41_ RL* q04
+q04 51_ 51_ RL* q04
+q04 61_ 61_ RL* q04
+q04 71_ 71_ RL* q04
+q04 81_ 81_ RL* q04
+q04 91_ 91_ RL* q04
+q04 01_ 01_ RL* q04
+
+q04 1__ 11_ RL* q04
+q04 2__ 21_ RL* q04
+q04 3__ 31_ RL* q04
+q04 4__ 41_ RL* q04
+q04 5__ 51_ RL* q04
+q04 6__ 61_ RL* q04
+q04 7__ 71_ RL* q04
+q04 8__ 81_ RL* q04
+q04 9__ 91_ RL* q04
+q04 0__ 01_ RL* q04
+
+;lendo A, terminou de ler o estado (já tem K da máquina)
+q04 A1_ A1_ *L* q04
+q04 A__ A__ R** qskip2
+
+;vai até à máquina seguinte 
+qskip2 Q__ Q__ R** qskip2
+qskip2 A__ A__ R** qskip2
+qskip2 Y__ Y__ R** qskip2
+qskip2 N__ N__ R** qskip2
+qskip2 S__ S__ R** qskip2
+qskip2 L__ L__ R** qskip2
+qskip2 R__ R__ R** qskip2
+qskip2 1__ 1__ R** qskip2
+qskip2 2__ 2__ R** qskip2
+qskip2 3__ 3__ R** qskip2
+qskip2 4__ 4__ R** qskip2
+qskip2 5__ 5__ R** qskip2
+qskip2 6__ 6__ R** qskip2
+qskip2 7__ 7__ R** qskip2
+qskip2 8__ 8__ R** qskip2
+qskip2 9__ 9__ R** qskip2
+qskip2 0__ 0__ R** qskip2
+qskip2 ;__ ;__ R** qskip2
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; TERCEIRA MÁQUINA
+
+;chegou à 3.ª máquina 
+qskip2 $__ $__ R** q08
+q08 Q__ Q__ RR* q06
+q08 Y__ Y__ RR* q06
+q08 N__ N__ RR* q06
+
+;ver K da 3.ª máquina 
+q06 11_ 11_ RR* q06
+q06 21_ 21_ RR* q06
+q06 31_ 31_ RR* q06
+q06 41_ 41_ RR* q06
+q06 51_ 51_ RR* q06
+q06 61_ 61_ RR* q06
+q06 71_ 71_ RR* q06
+q06 81_ 81_ RR* q06
+q06 91_ 91_ RR* q06
+q06 01_ 01_ RR* q06
+
+q06 1__ 11_ RR* q06
+q06 2__ 21_ RR* q06
+q06 3__ 31_ RR* q06
+q06 4__ 41_ RR* q06
+q06 5__ 51_ RR* q06
+q06 6__ 61_ RR* q06
+q06 7__ 71_ RR* q06
+q06 8__ 81_ RR* q06
+q06 9__ 91_ RR* q06
+q06 0__ 01_ RR* q06
+
+;lendo A, terminou de ler o estado (já tem K da máquina)
+q06 A1_ A1_ *R* q06
+q06 A__ A__ R** qskip3
+
+;vai até à máquina seguinte 
+qskip3 Q__ Q__ R** qskip3
+qskip3 A__ A__ R** qskip3
+qskip3 Y__ Y__ R** qskip3
+qskip3 N__ N__ R** qskip3
+qskip3 S__ S__ R** qskip3
+qskip3 L__ L__ R** qskip3
+qskip3 R__ R__ R** qskip3
+qskip3 1__ 1__ R** qskip3
+qskip3 2__ 2__ R** qskip3
+qskip3 3__ 3__ R** qskip3
+qskip3 4__ 4__ R** qskip3
+qskip3 5__ 5__ R** qskip3
+qskip3 6__ 6__ R** qskip3
+qskip3 7__ 7__ R** qskip3
+qskip3 8__ 8__ R** qskip3
+qskip3 9__ 9__ R** qskip3
+qskip3 0__ 0__ R** qskip3
+qskip3 ;__ ;__ R** qskip3
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; VOLTAR AO INÍCIO
+
+;fim do cálculo - não há mais máquinas
+qskip3 ___ ___ L** qat
+
+qat ___ ___ R** first_machine
+qat *__ *__ L** qat
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; SEGUNDO PASSO: calcular a máquina resultante de fazer if C then M1 else M2
+; isso é feito tendo em conta três aspetos:
+;	1) na máquina C, substitui o estado de aceitação (YY...) pelo estado inicial de M1 (Q10...)
+;	2) a máquina C, substitui o estado de rejeição (NN...) pelo estado inicial de M2 (Q20...)
+;	3) teremos de modificar ligeiramente as máquinas enquanto as copiamos, devido ao trabalho que tivemos antes a calcular K
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+first_machine Q__ Q_Q **R copy_state_00
+first_machine A__ A_A R*R first_machine
+first_machine S__ S_S R*R first_machine
+first_machine L__ L_L R*R first_machine
+first_machine R__ R_R R*R first_machine
+first_machine ;__ ;_; R*R first_machine
+first_machine $__ $_; R*R second_machine
+
+first_machine 1__ 1_1 R*R first_machine
+first_machine 2__ 2_2 R*R first_machine
+first_machine 3__ 3_3 R*R first_machine
+first_machine 4__ 4_4 R*R first_machine
+first_machine 5__ 5_5 R*R first_machine
+first_machine 6__ 6_6 R*R first_machine
+first_machine 7__ 7_7 R*R first_machine
+first_machine 8__ 8_8 R*R first_machine
+first_machine 9__ 9_9 R*R first_machine
+first_machine 0__ 0_0 R*R first_machine
+
+; questão anteriormente mencionada do estado de aceitação/rejeição de C
+first_machine N__ N_Q **R copy_no_00
+first_machine Y__ Y_Q **R copy_yes_00
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; CASO ESPECIAL: estados de aceitação e rejeição (estados iniciais de M1 ou M2)
+copy_no_00 N__ N_2 RLR copy_no_00
+copy_no_00 N1_ N10 RLR copy_no_00
+copy_no_00 A1_ A10 *LR copy_no_00
+copy_no_00 A__ A__ *R* copy_state_aux_00
+
+copy_yes_00 Y__ Y_1 RLR copy_yes_00
+copy_yes_00 Y1_ Y10 RLR copy_yes_00
+copy_yes_00 A1_ A10 *LR copy_yes_00
+copy_yes_00 A__ A__ *R* copy_state_aux_00
+
+; copiar estado, ajustando para o valor de K
+
+; esta é a máquina 0 --> colocamos Q0(...) e o resto do estado
+copy_state_00 Q__ Q_0 RLR copy_state_00 
+
+copy_state_00 01_ 010 RLR copy_state_00
+copy_state_00 11_ 111 RLR copy_state_00
+copy_state_00 21_ 212 RLR copy_state_00
+copy_state_00 31_ 313 RLR copy_state_00
+copy_state_00 41_ 414 RLR copy_state_00
+copy_state_00 51_ 515 RLR copy_state_00
+copy_state_00 61_ 616 RLR copy_state_00
+copy_state_00 71_ 717 RLR copy_state_00
+copy_state_00 81_ 818 RLR copy_state_00
+copy_state_00 91_ 919 RLR copy_state_00
+copy_state_00 A1_ A10 *LR copy_state_00
+
+copy_state_00 A__ A__ *R* copy_state_aux_00
+copy_state_aux_00 A1_ A1_ *R* copy_state_aux_00
+copy_state_aux_00 A__ A__ *** first_machine
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; todos os raciocínios são iguais para C no que diz respeito ao copiar 
+
+second_machine Q__ Q_Q **R copy_state_01
+second_machine A__ A_A R*R second_machine
+second_machine S__ S_S R*R second_machine
+second_machine L__ L_L R*R second_machine
+second_machine R__ R_R R*R second_machine
+second_machine ;__ ;_; R*R second_machine
+second_machine $__ $_; R*R third_machine
+
+second_machine 1__ 1_1 R*R second_machine
+second_machine 2__ 2_2 R*R second_machine
+second_machine 3__ 3_3 R*R second_machine
+second_machine 4__ 4_4 R*R second_machine
+second_machine 5__ 5_5 R*R second_machine
+second_machine 6__ 6_6 R*R second_machine
+second_machine 7__ 7_7 R*R second_machine
+second_machine 8__ 8_8 R*R second_machine
+second_machine 9__ 9_9 R*R first_machine
+second_machine 0__ 0_0 R*R second_machine
+
+second_machine N__ N_N **R copy_no_01
+second_machine Y__ Y_Y **R copy_yes_01
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+; CASO ESPECIAL: estados de aceitação e rejeição (não pomos 0's para preencher, pomos Y/N)
+copy_no_01 N__ N_N RLR copy_no_01
+copy_no_01 N1_ N1N RLR copy_no_01
+copy_no_01 A1_ A1N *LR copy_no_01
+copy_no_01 A__ A__ *R* copy_state_aux_01
+
+copy_yes_01 Y__ Y_Y RLR copy_yes_01
+copy_yes_01 Y1_ Y1Y RLR copy_yes_01
+copy_yes_01 A1_ A1Y *LR copy_yes_01
+copy_yes_01 A__ A__ *R* copy_state_aux_01
+
+; copiar estado, ajustando para o valor de K
+
+; esta é a máquina 1 --> colocamos Q1(...) e o resto do estado
+copy_state_01 Q__ Q_1 RLR copy_state_01
+
+copy_state_01 01_ 010 RLR copy_state_01
+copy_state_01 11_ 111 RLR copy_state_01
+copy_state_01 21_ 212 RLR copy_state_01
+copy_state_01 31_ 313 RLR copy_state_01
+copy_state_01 41_ 414 RLR copy_state_01
+copy_state_01 51_ 515 RLR copy_state_01
+copy_state_01 61_ 616 RLR copy_state_01
+copy_state_01 71_ 717 RLR copy_state_01
+copy_state_01 81_ 818 RLR copy_state_01
+copy_state_01 91_ 919 RLR copy_state_01
+copy_state_01 A1_ A10 *LR copy_state_01
+
+copy_state_01 A__ A__ *R* copy_state_aux_01
+copy_state_aux_01 A1_ A1_ *R* copy_state_aux_01
+copy_state_aux_01 A__ A__ *** second_machine
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; todos os raciocínios são iguais para C no que diz respeito ao copiar 
+
+third_machine Q__ Q_Q **R copy_state_02
+third_machine A__ A_A R*R third_machine
+third_machine S__ S_S R*R third_machine
+third_machine L__ L_L R*R third_machine
+third_machine R__ R_R R*R third_machine
+third_machine ;__ ;_; R*R third_machine
+third_machine ___ ___ **L rewind
+
+third_machine 1__ 1_1 R*R third_machine
+third_machine 2__ 2_2 R*R third_machine
+third_machine 3__ 3_3 R*R third_machine
+third_machine 4__ 4_4 R*R third_machine
+third_machine 5__ 5_5 R*R third_machine
+third_machine 6__ 6_6 R*R third_machine
+third_machine 7__ 7_7 R*R third_machine
+third_machine 8__ 8_8 R*R third_machine
+third_machine 9__ 9_9 R*R third_machine
+third_machine 0__ 0_0 R*R third_machine
+
+third_machine N__ N_N **R copy_no_02
+third_machine Y__ Y_Y **R copy_yes_02
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+; CASO ESPECIAL: estados de aceitação e rejeição (não pomos 0's para preencher, pomos Y/N)
+copy_no_02 N__ N_N RLR copy_no_02
+copy_no_02 N1_ N1N RLR copy_no_02
+copy_no_02 A1_ A1N *LR copy_no_02
+copy_no_02 A__ A__ *R* copy_state_aux_02
+
+copy_yes_02 Y__ Y_Y RLR copy_yes_02
+copy_yes_02 Y1_ Y1Y RLR copy_yes_02
+copy_yes_02 A1_ A1Y *LR copy_yes_02
+copy_yes_02 A__ A__ *R* copy_state_aux_02
+
+; copiar estado, ajustando para o valor de K
+
+; esta é a máquina 2 --> colocamos Q2(...) e o resto do estado
+copy_state_02 Q__ Q_2 RLR copy_state_02
+
+copy_state_02 N__ N_N RLR copy_state_02
+copy_state_02 Y__ Y_Y RLR copy_state_02
+
+copy_state_02 N1_ N1N RLR copy_state_02
+copy_state_02 Y1_ Y1Y RLR copy_state_02
+
+copy_state_02 01_ 010 RLR copy_state_02
+copy_state_02 11_ 111 RLR copy_state_02
+copy_state_02 21_ 212 RLR copy_state_02
+copy_state_02 31_ 313 RLR copy_state_02
+copy_state_02 41_ 414 RLR copy_state_02
+copy_state_02 51_ 515 RLR copy_state_02
+copy_state_02 61_ 616 RLR copy_state_02
+copy_state_02 71_ 717 RLR copy_state_02
+copy_state_02 81_ 818 RLR copy_state_02
+copy_state_02 91_ 919 RLR copy_state_02
+copy_state_02 A1_ A10 *LR copy_state_02
+
+copy_state_02 A__ A__ *R* copy_state_aux_02
+copy_state_aux_02 A1_ A1_ *R* copy_state_aux_02
+copy_state_aux_02 A__ A__ *** third_machine
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; ÚLTIMO PASSO: por convenção, vamos colocar o cursor no início da máquina calculada
+
+rewind **_ **_ **R halt-accept
+rewind *** *** **L rewind

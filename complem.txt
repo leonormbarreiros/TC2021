@@ -1,0 +1,7 @@
+q0 _ _ l qr
+q0 Y N r q0
+q0 N Y r q0
+q0 * * r q0
+
+qr _ _ r halt-accept
+qr * * l qr
